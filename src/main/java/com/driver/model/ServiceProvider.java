@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "serviceProvider")
 public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,13 @@ public class ServiceProvider {
 
     @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
     List<Connection> connectionList;
+
+    public ServiceProvider(String name) {
+        this.name = name;
+    }
+
+    public ServiceProvider() {
+    }
 
     public int getId() {
         return id;

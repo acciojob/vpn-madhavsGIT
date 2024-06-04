@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "admin")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +15,16 @@ public class Admin {
 
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
     List<ServiceProvider> serviceProviders;
+
+    public Admin() {
+    }
+
+    public Admin(String username, String password) {
+
+        this.username = username;
+        this.password = password;
+
+    }
 
     public int getId() {
         return id;
